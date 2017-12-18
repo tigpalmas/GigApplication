@@ -72,7 +72,7 @@ class BaseEstablishmentFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        (activity as AppCompatActivity).supportActionBar!!.title = mEstablishment!!.personalDataId.name
+        (activity as AppCompatActivity).supportActionBar?.title = mEstablishment?.personalDataId?.name
     }
 
 

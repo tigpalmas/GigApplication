@@ -1,6 +1,7 @@
 package com.example.tiago.myapplication.adapters
 
 import android.content.Context
+import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import android.widget.ImageView
 import com.example.tiago.myapplication.R
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
+import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
+import com.example.tiago.myapplication.fragments.EventDetailFragment
 import com.squareup.picasso.Picasso
 
 /**
@@ -33,12 +36,29 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         return EventAdapter.ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_event, parent, false))
     }
 
-    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
+        lateinit var ctx : Context
+        lateinit var event: Event;
         val imgEvent = itemView?.findViewById<ImageView>(R.id.iv_event);
 
+        init {
+            imgEvent?.setOnClickListener(this)
+        }
+
         fun bind(item: Event, ctx: Context){
-            Log.i("teste", item.imgUrl);
+            this.ctx = ctx;
+            event = item;
             Picasso.with(ctx).load(item.imgUrl).into(imgEvent)
+
+        }
+
+        override fun onClick(p0: View?) {
+            val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
+            val fragment = EventDetailFragment.novaInstancia(event);
+            fragmentTransaction?.replace(R.id.main_container, fragment, "event")
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
         }
     }
 }

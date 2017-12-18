@@ -7,6 +7,7 @@ import java.io.Serializable
  */
 class Event(
         val _id: String,
+        val name: String,
         val description: String?,
         val imgUrl: String
 

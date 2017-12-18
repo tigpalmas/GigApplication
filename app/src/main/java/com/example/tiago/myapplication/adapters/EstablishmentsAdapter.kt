@@ -43,7 +43,6 @@ class EstablishmentsAdapter(items: List<Establishment>, ctx: Context): RecyclerV
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener{
 
-        private var fragmentTransaction: FragmentTransaction? = null
         private var ctx: Context? = null
         var ivLogo = itemView.findViewById<ImageView>(R.id.iv_logo);
         lateinit var establishment :Establishment
@@ -59,11 +58,11 @@ class EstablishmentsAdapter(items: List<Establishment>, ctx: Context): RecyclerV
         }
 
         override fun onClick(p0: View?) {
-            fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
+            val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
             val fragment = BaseEstablishmentFragment.novaInstancia(establishment);
-             fragmentTransaction!!.replace(R.id.main_container, fragment, "prom")
-            fragmentTransaction!!.addToBackStack(null)
-            fragmentTransaction!!.commit()
+             fragmentTransaction?.replace(R.id.main_container, fragment, "prom")
+            fragmentTransaction?.addToBackStack(null)
+            fragmentTransaction?.commit()
         }
 
 
