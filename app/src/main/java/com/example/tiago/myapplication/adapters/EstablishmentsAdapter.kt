@@ -60,7 +60,7 @@ class EstablishmentsAdapter(items: List<Establishment>, ctx: Context): RecyclerV
         override fun onClick(p0: View?) {
             val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
             val fragment = BaseEstablishmentFragment.novaInstancia(establishment);
-             fragmentTransaction?.replace(R.id.main_container, fragment, "prom")
+             fragmentTransaction?.add(R.id.main_container, fragment, "prom")
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
         }

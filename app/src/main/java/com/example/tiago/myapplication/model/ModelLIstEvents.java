@@ -44,12 +44,14 @@ public class ModelLIstEvents implements MVP.ModelListEvents {
                     }else{
                         presenter.showLoadProgresss(false, "Sem eventos cadastrados no momento");
                     }
+                }else{
+                    presenter.showLoadProgresss(false, "error");
                 }
            }
 
            @Override
            public void onFailure(Call<List<Event>> call, Throwable t) {
-
+               presenter.showLoadProgresss(false, t.getMessage());
            }
        });
     }

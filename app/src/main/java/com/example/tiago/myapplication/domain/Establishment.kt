@@ -10,6 +10,7 @@ class Establishment(
         val imgLogo: String,
         val group: String,
         val personalDataId:PersonalData
+
 ) : Serializable {
 
 }

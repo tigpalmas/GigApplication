@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.tiago.myapplication.R
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
 import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
 import com.example.tiago.myapplication.fragments.EventDetailFragment
+import com.example.tiago.myapplication.utils.Util
 import com.squareup.picasso.Picasso
 
 /**
@@ -41,6 +43,7 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         lateinit var ctx : Context
         lateinit var event: Event;
         val imgEvent = itemView?.findViewById<ImageView>(R.id.iv_event);
+        val txtDate = itemView?.findViewById<TextView>(R.id.txt_date);
 
         init {
             imgEvent?.setOnClickListener(this)
@@ -49,6 +52,7 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         fun bind(item: Event, ctx: Context){
             this.ctx = ctx;
             event = item;
+            txtDate?.setText(Util.obterDataPorExtenso(item?.beginDate))
             Picasso.with(ctx).load(item.imgUrl).into(imgEvent)
 
         }
@@ -56,7 +60,7 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         override fun onClick(p0: View?) {
             val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
             val fragment = EventDetailFragment.novaInstancia(event);
-            fragmentTransaction?.replace(R.id.main_container, fragment, "event")
+            fragmentTransaction?.add(R.id.main_container, fragment, "event")
             fragmentTransaction?.addToBackStack(null)
             fragmentTransaction?.commit()
         }

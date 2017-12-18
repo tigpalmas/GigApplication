@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 
@@ -65,9 +66,17 @@ class BaseEstablishmentFragment : Fragment() {
             viewPagerCasaDetalheAdapter.addFragments(fragment, "Programação")
         }
 
-
-        viewPager.setAdapter(viewPagerCasaDetalheAdapter);
+        viewPager?.offscreenPageLimit = 3
+        viewPager?.setAdapter(viewPagerCasaDetalheAdapter);
         tabs.setupWithViewPager(viewPager);
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?) {
+        menu?.clear()
+        activity.menuInflater.inflate(R.menu.menu_main, menu)
+        var meuMenu = menu?.findItem(R.id.action_favorit);
+        meuMenu?.isVisible = true
+
     }
 
     override fun onResume() {
@@ -75,6 +84,10 @@ class BaseEstablishmentFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = mEstablishment?.personalDataId?.name
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        (activity as AppCompatActivity).supportActionBar?.title = "Estabelecimentos"
+    }
 
 
 }// Required empty public constructor

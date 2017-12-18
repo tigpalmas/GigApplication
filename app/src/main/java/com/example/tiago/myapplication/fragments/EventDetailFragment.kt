@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.item_event.*
 class EventDetailFragment : Fragment() {
 
     private var mEvent: Event? = null;
+
 
 
     companion object {
@@ -57,9 +59,26 @@ class EventDetailFragment : Fragment() {
         Picasso.with(activity).load(mEvent?.imgUrl).into(iv_event)
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu?) {
+        menu?.clear()
+        activity.menuInflater.inflate(R.menu.menu_main, menu)
+        var meuMenu = menu?.findItem(R.id.action_share);
+        meuMenu?.isVisible = true
+
+    }
+
+
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = mEvent?.name
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }
+
+
+
 }// Required empty public constructor
+

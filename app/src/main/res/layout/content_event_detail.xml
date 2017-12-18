@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-
+android:background="@color/background"
 android:fillViewport="true"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
@@ -28,31 +28,6 @@ app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
 
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-
-            app:tabIndicatorColor="@color/colorAccent"
-            app:tabIndicatorHeight="3dp"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="center"
-            app:tabMode="fixed"
-            app:tabSelectedTextColor="@color/md_white_1000"
-            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="@color/md_white_1000">
-        </android.support.design.widget.TabLayout>
-
-
-        <android.support.v4.view.ViewPager
-            android:tag="viewPager"
-            android:id="@+id/viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_below="@+id/tabs"></android.support.v4.view.ViewPager>
     </RelativeLayout>
 
 
