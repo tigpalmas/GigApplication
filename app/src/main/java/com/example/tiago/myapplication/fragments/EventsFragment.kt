@@ -78,7 +78,7 @@ class EventsFragment : Fragment(), MVP.ViewListEvents {
     }
 
     override fun updateList() {
-        adapter?.notifyDataSetChanged()
+
     }
 
     override fun showLoadProgresss(status: Boolean, message: String) {

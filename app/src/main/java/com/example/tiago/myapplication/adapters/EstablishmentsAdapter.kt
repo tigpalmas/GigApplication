@@ -1,6 +1,7 @@
 package com.example.tiago.myapplication.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.widget.RecyclerView
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.example.tiago.myapplication.EstablishmentDetailActivity
 import com.example.tiago.myapplication.R
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
@@ -52,17 +54,15 @@ class EstablishmentsAdapter(items: List<Establishment>, ctx: Context): RecyclerV
         }
 
         fun bind(item: Establishment, ctx: Context, width: Int){
-            Picasso.with(ctx).load(item.imgLogo).into(ivLogo)
+            Picasso.with(ctx).load(item.imgLogo).resize(width/2, width/2).into(ivLogo)
             establishment = item;
             this.ctx = ctx;
         }
 
         override fun onClick(p0: View?) {
-            val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
-            val fragment = BaseEstablishmentFragment.novaInstancia(establishment);
-             fragmentTransaction?.add(R.id.main_container, fragment, "prom")
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
+            val intent = Intent(ctx,EstablishmentDetailActivity::class.java)
+            intent.putExtra("hello", establishment);
+            ctx?.startActivity(intent)
         }
 
 

@@ -5,12 +5,12 @@
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Eventos" />
+        android:title="Timeline" />
 
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_black_24dp"
-        android:title="Houses" />
+        android:title="Estabelecimentos" />
 
 
     <item

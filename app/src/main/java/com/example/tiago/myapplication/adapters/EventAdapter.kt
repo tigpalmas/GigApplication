@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.tiago.myapplication.R
+import com.example.tiago.myapplication.R.id.txt_event_name
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
 import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
@@ -43,7 +44,10 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         lateinit var ctx : Context
         lateinit var event: Event;
         val imgEvent = itemView?.findViewById<ImageView>(R.id.iv_event);
-        val txtDate = itemView?.findViewById<TextView>(R.id.txt_date);
+
+
+        val txtEventName = itemView?.findViewById<TextView>(R.id.txt_event_name);
+      //  val txtDate = itemView?.findViewById<TextView>(R.id.txt_date);
 
         init {
             imgEvent?.setOnClickListener(this)
@@ -52,17 +56,20 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
         fun bind(item: Event, ctx: Context){
             this.ctx = ctx;
             event = item;
-            txtDate?.setText(Util.obterDataPorExtenso(item?.beginDate))
+           // txtDate?.setText(Util.obterDataPorExtenso(item?.beginDate))
+            txtEventName?.text = event.name
             Picasso.with(ctx).load(item.imgUrl).into(imgEvent)
 
         }
 
         override fun onClick(p0: View?) {
-            val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
+          /*  val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
             val fragment = EventDetailFragment.novaInstancia(event);
-            fragmentTransaction?.add(R.id.main_container, fragment, "event")
+            fragmentTransaction?.add(R.id.container, fragment, "event")
             fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()
+            fragmentTransaction?.commit()*/
+
+            Util.showToast(ctx, "Ainda não implementado")
         }
     }
 }

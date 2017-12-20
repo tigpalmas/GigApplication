@@ -16,6 +16,7 @@ import com.example.tiago.myapplication.adapters.EstablishmentsAdapter
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.model.MVP
 import com.example.tiago.myapplication.presenter.PresenterListEstablishment
+import com.example.tiago.myapplication.utils.SpacesItemDecoration
 import kotlinx.android.synthetic.main.fragment_list_establishment.*
 
 
@@ -54,6 +55,7 @@ class ListEstablishmentFragment : Fragment(), MVP.ViewListEstablishment, SearchV
         if(activity !=null){
             rv_events!!.layoutManager = GridLayoutManager(activity, 3, LinearLayoutManager.VERTICAL, false)
             rv_events.setHasFixedSize(true);
+            rv_events.addItemDecoration(SpacesItemDecoration(15))
             adapter = EstablishmentsAdapter(presenter?.getEstablishment()!!, activity);
             rv_events.adapter = adapter;
         }

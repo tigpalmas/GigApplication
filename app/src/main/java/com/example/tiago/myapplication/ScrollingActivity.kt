@@ -1,19 +1,17 @@
 package com.example.tiago.myapplication
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import com.example.tiago.myapplication.fragments.ListEstablishmentFragment
-import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
 import com.example.tiago.myapplication.fragments.TimeLineFragment
 import com.example.tiago.myapplication.utils.BottomNavigationViewHelper
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_scrolling.*
 
-class MainActivity : AppCompatActivity() {
+class ScrollingActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
 
@@ -22,15 +20,11 @@ class MainActivity : AppCompatActivity() {
             R.id.navigation_home -> {
                 val fragment = ListEstablishmentFragment();
                 ShowFragmnetON(fragment, "fragment1");
-
                 return@OnNavigationItemSelectedListener true
-
             }
             R.id.navigation_dashboard -> {
                 val fragment = TimeLineFragment();
                 ShowFragmnetON(fragment, "fragment2");
-
-
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_Favoritos -> {
@@ -44,8 +38,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_scrolling)
+        setSupportActionBar(toolbar)
         BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
@@ -60,22 +54,8 @@ class MainActivity : AppCompatActivity() {
 
 
     fun ShowFragmnetON(fragment: Fragment, tag: String){
-        val transaction = manager.beginTransaction();
-        transaction.replace(R.id.main_container, fragment,tag);
+        val transaction = manager.beginTransaction().setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out );
+        transaction.replace(R.id.container, fragment,tag);
         transaction.commit();
     }
-
-   /* override fun onBackPressed() {
-        val builder = AlertDialog.Builder(this)
-                .setTitle("Fechar o Programa")
-                .setMessage("Do You want to close")
-                .setPositiveButton("YEs",{dialog: DialogInterface, i: Int ->
-                    finish()
-                })
-                .setNegativeButton("No",{dialog: DialogInterface, i: Int ->
-
-                })
-                .show();
-     
-    }*/
 }
