@@ -70,7 +70,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mMapView = (CustomMapView) mView.findViewById(R.id.mapView);
-        txtAdress = (TextView) mView.findViewById(R.id.txt_adress);
+
         if(mMapView != null){
             mMapView.onCreate(null);
             mMapView.onResume();
@@ -90,7 +90,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         float log = Float.parseFloat("-49.271947");
 
         googleMap.addMarker(new MarkerOptions().position(new LatLng(lat, log)).title("Here"));
-        CameraPosition cameraPosition = CameraPosition.builder().target(new LatLng(lat, log)).zoom(16).bearing(0).tilt(45).build();
+        CameraPosition cameraPosition = CameraPosition.builder().target(new LatLng(lat, log)).zoom(16).bearing(0).build();
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
     }

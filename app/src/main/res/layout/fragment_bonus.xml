@@ -10,13 +10,13 @@
         android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/srl_timeline"
+            android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_objects"
+                android:id="@+id/rv_bonus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -29,8 +29,9 @@
 
 
     <TextView
-        android:text="Carregando Programação..."
-        android:id="@+id/txt_timeline"
+        android:visibility="gone"
+        android:text="Carregando Bônus..."
+        android:id="@+id/txt_loading_events"
         style="@style/txt_loading_style" />
 
 

@@ -13,6 +13,7 @@ import com.example.tiago.myapplication.R
 import com.example.tiago.myapplication.adapters.ViewPagerCasaDetalheAdapter
 import com.example.tiago.myapplication.domain.Establishment
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_establishment_detail.*
 import kotlinx.android.synthetic.main.content_base_establishment.*
 import kotlinx.android.synthetic.main.fragment_blank_fragment2.*
 
@@ -64,6 +65,7 @@ class BaseEstablishmentFragment : Fragment() {
         if(mEstablishment!=null){
             val fragment = EventsFragment.novaInstancia(mEstablishment!!)
             viewPagerCasaDetalheAdapter.addFragments(fragment, "Programação")
+
         }
 
         viewPager?.offscreenPageLimit = 3

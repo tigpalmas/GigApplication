@@ -38,7 +38,6 @@ public class ModelLIstEvents implements MVP.ModelListEvents {
                 if(response.isSuccessful()){
                     List<Event> events = response.body();
                     if(events.size()>0){
-
                         presenter.updateList(events);
                         presenter.showLoadProgresss(false, "");
                     }else{

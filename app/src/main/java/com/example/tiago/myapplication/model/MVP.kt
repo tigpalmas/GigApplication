@@ -2,11 +2,33 @@ package com.example.tiago.myapplication.model
 
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
+import com.example.tiago.myapplication.domain.TimelineModel
 
 /**
  * Created by tiago on 09/12/2017.
  */
 interface MVP {
+
+    //TIMELINE
+
+    interface ModelListTimeLine{
+        fun retriveData();
+    }
+
+    interface PresenterListTimeLine{
+        fun retriveData();
+        fun updateList(objects : List<TimelineModel>);
+        fun setView(view: MVP.ViewListTimeLine);
+        fun showLoadProgresss(status: Boolean, message: String);
+         fun getObjects(): List<TimelineModel>
+    }
+
+    interface  ViewListTimeLine{
+        fun updateList();
+        fun showLoadProgresss(status: Boolean, message: String)
+    }
+
+
     //LIST ESTABLISHMENT
     interface ModelListEstablishments{
         fun retrieveEstablishments();
