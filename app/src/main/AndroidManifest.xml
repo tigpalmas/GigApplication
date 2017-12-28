@@ -32,10 +32,22 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ScrollingActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_scrolling"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EstablishmentDetailActivity"
+            android:label="@string/title_activity_establishment_detail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EventDetailActivity"
+            android:label="@string/title_activity_event_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ActivityIntro"
+            android:theme="@style/AppThemeFull">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,10 +55,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EstablishmentDetailActivity"
-            android:parentActivityName=".ScrollingActivity"
-            android:label="@string/title_activity_establishment_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".LoginActivity"
+            android:theme="@style/AppThemeFull" />
+        <activity
+            android:theme="@style/AppThemeFull"
+            android:name=".SignupActivity"></activity>
     </application>
 
 </manifest>

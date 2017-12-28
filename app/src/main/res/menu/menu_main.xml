@@ -4,6 +4,15 @@
     tools:context="com.example.tiago.twoticketsultimo.MainActivity">
 
     <item
+        android:id="@+id/action_calendar"
+        android:icon="@drawable/ic_calendar"
+        android:orderInCategory="100"
+        android:title="filtro"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+
+    <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="100"

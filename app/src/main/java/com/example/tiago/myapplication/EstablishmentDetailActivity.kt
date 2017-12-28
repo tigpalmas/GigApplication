@@ -1,7 +1,6 @@
 package com.example.tiago.myapplication
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import com.example.tiago.myapplication.adapters.ViewPagerCasaDetalheAdapter
@@ -9,13 +8,8 @@ import com.example.tiago.myapplication.domain.Establishment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_establishment_detail.*
 import kotlinx.android.synthetic.main.content_base_establishment.*
-import android.R.attr.name
-import android.support.design.widget.AppBarLayout
-import android.util.Log
 import android.view.MenuItem
 import com.example.tiago.myapplication.fragments.*
-import com.example.tiago.myapplication.utils.AppBarStateChangeListener
-
 
 
 class EstablishmentDetailActivity : AppCompatActivity() {
@@ -26,39 +20,28 @@ class EstablishmentDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_establishment_detail)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true);
-        val establishment: Establishment = intent.getSerializableExtra("hello") as Establishment;
+        val establishment: Establishment? = intent?.getSerializableExtra("hello") as? Establishment;
 
-     /*   app_bar.addOnOffsetChangedListener(object : AppBarStateChangeListener() {
-            override fun onStateChanged(appBarLayout: AppBarLayout, state: AppBarStateChangeListener.State) {
-                if(state.name=="COLLAPSED"){
-                    supportActionBar?.setTitle("")
-                    meuMenu?.isVisible = false
-                }else if(state.name=="EXPANDED"){
-                    supportActionBar?.setTitle(establishment.personalDataId.name)
-                    meuMenu?.isVisible = true
-                }
-            }
-        })*/
-
-
-
-        Picasso.with(this).load(establishment.imgLogo).into(img_event_detail);
-      //  supportActionBar?.setTitle(establishment.personalDataId.name)
+        Picasso.with(this).load(establishment?.imgLogo).into(img_event_detail);
+        txt_perfil_title?.text = establishment?.personalDataId?.name
 
         var viewPagerCasaDetalheAdapter = ViewPagerCasaDetalheAdapter(supportFragmentManager);
-        viewPagerCasaDetalheAdapter.addFragments(PerfilEstablishmentFragment(), "Sobre");
-        viewPagerCasaDetalheAdapter.addFragments(MapFragment(), "Localização");
 
         if(establishment!=null){
-            val fragment = EventsFragment.novaInstancia(establishment!!)
-            viewPagerCasaDetalheAdapter.addFragments(fragment, "Programação")
+            val perfilFragment = PerfilEstablishmentFragment.novaInstancia(establishment)
+            val fragmentEvents = EventsFragment.novaInstancia(establishment)
+            val fragmentNews = NewsFragment.novaInstancia(establishment)
+            val fragmentMap = MapFragment.novaInstancia(establishment)
+            viewPagerCasaDetalheAdapter.addFragments(perfilFragment, "Sobre");
+            viewPagerCasaDetalheAdapter.addFragments(fragmentMap, "Localização");
+            viewPagerCasaDetalheAdapter.addFragments(fragmentEvents, "Programação")
             viewPagerCasaDetalheAdapter.addFragments(BonusFragment(), "Bônus")
-            viewPagerCasaDetalheAdapter.addFragments(NewFragment(), "Noticías")
+            viewPagerCasaDetalheAdapter.addFragments(fragmentNews, "Noticías")
         }
 
         viewPager?.offscreenPageLimit = 3
         viewPager?.setAdapter(viewPagerCasaDetalheAdapter);
-        tabs.setupWithViewPager(viewPager);
+        tabs?.setupWithViewPager(viewPager);
     }
 
 

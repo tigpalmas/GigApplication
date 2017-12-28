@@ -70,7 +70,7 @@ class EventsFragment : Fragment(), MVP.ViewListEvents {
         swipeRefreshLayout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {  swipeRefreshLayout?.setRefreshing(false)})
         var activity = activity;
         if(activity !=null){
-            rv_events!!.layoutManager = LinearLayoutManager(activity,  LinearLayoutManager.VERTICAL, false)
+            rv_events?.layoutManager = LinearLayoutManager(activity,  LinearLayoutManager.VERTICAL, false)
             rv_events.setHasFixedSize(true);
             adapter = EventAdapter(presenter?.getEvents()!!, activity);
             rv_events.adapter = adapter;

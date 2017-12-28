@@ -50,7 +50,7 @@ public class ModelTimeline implements MVP.ModelListTimeLine {
 
             @Override
             public void onFailure(Call<List<TimelineModel>> call, Throwable t) {
-
+                presenter.showLoadProgresss(false, t.getMessage());
             }
         });
     }

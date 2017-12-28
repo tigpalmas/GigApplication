@@ -9,7 +9,10 @@ class Establishment(
         val _id : String,
         val imgLogo: String,
         val group: String,
-        val personalDataId:PersonalData
+        val capacity: String,
+        val description: String,
+        val personalDataId:PersonalData,
+        val addressId: Address?
 
 ) : Serializable {
 

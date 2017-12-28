@@ -55,4 +55,16 @@ public class Util {
         return dfmt.format(dataAtual);
     }
 
+    public static String obterMonth(Date dataAtual) {
+        Locale BRAZIL = new Locale("pt", "BR");
+        DateFormat dfmt = new SimpleDateFormat("MMM ", BRAZIL);
+        return dfmt.format(dataAtual);
+    }
+
+    public static String obterDay(Date dataAtual) {
+        Locale BRAZIL = new Locale("pt", "BR");
+        DateFormat dfmt = new SimpleDateFormat("dd ", BRAZIL);
+        return dfmt.format(dataAtual);
+    }
+
 }

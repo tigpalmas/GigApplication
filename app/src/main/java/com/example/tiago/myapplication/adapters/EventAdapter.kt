@@ -1,6 +1,7 @@
 package com.example.tiago.myapplication.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -9,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.tiago.myapplication.EventDetailActivity
 import com.example.tiago.myapplication.R
 import com.example.tiago.myapplication.R.id.txt_event_name
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
+import com.example.tiago.myapplication.domain.TimelineModel
 import com.example.tiago.myapplication.fragments.BaseEstablishmentFragment
 import com.example.tiago.myapplication.fragments.EventDetailFragment
 import com.example.tiago.myapplication.utils.Util
@@ -47,6 +50,8 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
 
 
         val txtEventName = itemView?.findViewById<TextView>(R.id.txt_event_name);
+        val txtMonth = itemView?.findViewById<TextView>(R.id.txt_month);
+        val txtDay = itemView?.findViewById<TextView>(R.id.txt_day);
       //  val txtDate = itemView?.findViewById<TextView>(R.id.txt_date);
 
         init {
@@ -57,19 +62,17 @@ class EventAdapter(items: List<Event>, ctx: Context): RecyclerView.Adapter<Event
             this.ctx = ctx;
             event = item;
            // txtDate?.setText(Util.obterDataPorExtenso(item?.beginDate))
-            txtEventName?.text = event.name
+            txtEventName?.text = event?.name
+            txtMonth?.text = Util.obterMonth(event?.beginDate).toUpperCase()
+            txtDay?.text = Util.obterDay(event?.beginDate).toUpperCase()
             Picasso.with(ctx).load(item.imgUrl).into(imgEvent)
 
         }
 
         override fun onClick(p0: View?) {
-          /*  val fragmentTransaction = (ctx as FragmentActivity).supportFragmentManager.beginTransaction()
-            val fragment = EventDetailFragment.novaInstancia(event);
-            fragmentTransaction?.add(R.id.container, fragment, "event")
-            fragmentTransaction?.addToBackStack(null)
-            fragmentTransaction?.commit()*/
-
-            Util.showToast(ctx, "Ainda não implementado")
+            val intent = Intent(ctx, EventDetailActivity::class.java)
+            intent.putExtra("eventExtra", event);
+            ctx?.startActivity(intent)
         }
     }
 }

@@ -2,6 +2,7 @@ package com.example.tiago.myapplication.model
 
 import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
+import com.example.tiago.myapplication.domain.News
 import com.example.tiago.myapplication.domain.TimelineModel
 
 /**
@@ -65,6 +66,24 @@ interface MVP {
     }
 
     interface  ViewListEvents{
+        fun updateList();
+        fun showLoadProgresss(status: Boolean, message: String)
+    }
+
+    //List News
+    interface ModelListNews{
+        fun retrieveNews(id: String);
+    }
+
+    interface PresenterListNews{
+        fun retrieveNews(id: String);
+        fun updateList(events : List<News>);
+        fun setView(view: MVP.ViewListNews);
+        fun showLoadProgresss(status: Boolean, message: String);
+        fun getNews(): List<News>
+    }
+
+    interface  ViewListNews{
         fun updateList();
         fun showLoadProgresss(status: Boolean, message: String)
     }

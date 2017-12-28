@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+
+    <com.flaviofaria.kenburnsview.KenBurnsView
+        android:id="@+id/img_dancer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="222dp" />
+
+    <RelativeLayout
+        android:background="#000000"
+        android:alpha="0.5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView12"
+            android:layout_alignStart="@+id/textView12"
+            android:layout_below="@+id/textView12"
+
+            android:text="Em um só lugar"
+            android:textColor="#FFFFFF"
+            android:textSize="45sp"
+            android:textStyle="bold|italic"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_month"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="43dp"
+
+            android:text="Toda sua noite "
+            android:textColor="#FFFFFF"
+            android:textSize="45sp"
+            android:textStyle="italic"
+            android:typeface="normal" />
+
+        <TextView
+            android:id="@+id/txt_entry"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/linearLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="115dp"
+            android:gravity="center"
+            android:text="Criar conta Depois"
+            android:textColor="#FFFFFF"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+
+        <LinearLayout
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linearLayout3">
+
+            <Button
+                android:layout_margin="5dp"
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
+                android:background="@drawable/bg_btn_login"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/btn_login"
+                android:textColor="@color/md_white_1000"
+                android:layout_weight="1"
+                android:text="Login" />
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_login"
+
+                android:text="Cadastrar"
+                android:textColor="@color/md_white_1000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="sans-serif-thin"
+            android:text="GiG"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

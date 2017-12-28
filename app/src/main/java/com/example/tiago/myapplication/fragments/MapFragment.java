@@ -26,19 +26,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     public static final String EXTRA_PROM = "extra_prom";
-    private Establishment mProm;
+    private Establishment mEstablishment;
     private GoogleMap mGoogleMap;
     private CustomMapView mMapView;
     private View mView;
-    private TextView txtAdress;
+    private TextView txtAdress, txtEstablishmentName;
 
 
 
 
 
-    public static MapFragment novaInstancia(Establishment prom) {
+    public static MapFragment novaInstancia(Establishment establishment) {
         Bundle parametros = new Bundle();
-        parametros.putSerializable(EXTRA_PROM, prom);
+        parametros.putSerializable(EXTRA_PROM, establishment);
         MapFragment fragment = new MapFragment();
         fragment.setArguments(parametros);
         return fragment;
@@ -51,7 +51,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         setHasOptionsMenu(true);
         if (getArguments() != null) {
             if (getArguments().getSerializable(EXTRA_PROM) != null) {
-                mProm = (Establishment) getArguments().getSerializable(EXTRA_PROM);
+                mEstablishment = (Establishment) getArguments().getSerializable(EXTRA_PROM);
             }
         }
     }
@@ -61,6 +61,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView = inflater.inflate(R.layout.fragment_map, container, false);
+        txtEstablishmentName = (TextView) mView.findViewById(R.id.txt_establishment_name);
+        txtAdress = (TextView) mView.findViewById(R.id.txt_establishment_address);
 
 
         return mView;
@@ -75,6 +77,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mMapView.onCreate(null);
             mMapView.onResume();
             mMapView.getMapAsync(this);
+        }
+
+        if(mEstablishment!=null){
+            if(mEstablishment.getAddressId()!=null){
+                if(mEstablishment.getAddressId().getStreet()!= null &&
+                        mEstablishment.getAddressId().getNumber()!=null &&
+                        mEstablishment.getAddressId().getCity()!=null){
+                    txtAdress.setText(mEstablishment.getAddressId().getStreet()+ ", "+
+                    mEstablishment.getAddressId().getNumber()+ " "+
+                    mEstablishment.getAddressId().getCity());
+                }
+            }
+
+            if(mEstablishment.getPersonalDataId()!=null){
+                if(mEstablishment.getPersonalDataId().getName()!=null){
+                    txtEstablishmentName.setText(mEstablishment.getPersonalDataId().getName());
+                }
+            }
         }
 
 
