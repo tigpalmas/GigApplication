@@ -13,6 +13,7 @@ class Event(
         val imgUrl: String,
         val beginDate: Date
 
+
 ) : Serializable {
 
 }

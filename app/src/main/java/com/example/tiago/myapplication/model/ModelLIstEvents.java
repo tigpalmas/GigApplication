@@ -31,7 +31,7 @@ public class ModelLIstEvents implements MVP.ModelListEvents {
     }
 
     private void getEvensFromServer(String id) {
-        Call<List<Event>> call = service.getEvents(id);
+        Call<List<Event>> call = service.getEventsLine();
        call.enqueue(new Callback<List<Event>>() {
            @Override
            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {

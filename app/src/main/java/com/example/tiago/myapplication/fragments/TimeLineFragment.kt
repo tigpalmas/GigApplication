@@ -7,13 +7,17 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 
 import com.example.tiago.myapplication.R
 
 import com.example.tiago.myapplication.adapters.TimeLineAdapter
+import com.example.tiago.myapplication.domain.FilterTimeline
+import com.example.tiago.myapplication.domain.TimelineModel
 import com.example.tiago.myapplication.model.MVP
+import com.example.tiago.myapplication.model.ModelTimeline
 import com.example.tiago.myapplication.presenter.PresenterTimeline
 import com.example.tiago.myapplication.utils.Util
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
@@ -26,10 +30,22 @@ import java.util.*
  * A simple [Fragment] subclass.
  */
 class TimeLineFragment : Fragment(), MVP.ViewListTimeLine,  DatePickerDialog.OnDateSetListener {
+    override fun updateListBonus() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateListNews() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateListEvents() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 
     var presenter: MVP.PresenterListTimeLine? = null
     var adapter : TimeLineAdapter? = null;
+     var timelineFilter =  FilterTimeline();
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +60,7 @@ class TimeLineFragment : Fragment(), MVP.ViewListTimeLine,  DatePickerDialog.OnD
         val view = inflater!!.inflate(R.layout.fragment_time_line, container, false)
         presenter = PresenterTimeline()
         presenter?.setView(this)
-        presenter?.retriveData()
+        presenter?.retriveData(timelineFilter)
 
         return view;
     }
@@ -69,7 +85,11 @@ class TimeLineFragment : Fragment(), MVP.ViewListTimeLine,  DatePickerDialog.OnD
 
 
     override fun onDateSet(view: DatePickerDialog?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-        Util.showToast(activity, "Vamos Buscar eventos do dia $dayOfMonth/$monthOfYear/$year logo logo para você")
+        presenter?.clearList()
+        showLoadProgresss(true, "Buscando para $dayOfMonth/$monthOfYear");
+        val month = monthOfYear+1
+        timelineFilter.date = "$month/$dayOfMonth/$year"
+        presenter?.retriveData(timelineFilter);
     }
 
     fun showDateFilter(){

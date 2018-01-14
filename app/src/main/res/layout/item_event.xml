@@ -19,9 +19,9 @@
 
 
         <ImageView
-            android:id="@+id/iv_event"
+            android:id="@+id/iv_bonus"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop" />
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -38,7 +38,7 @@
             android:layout_marginTop="16dp" />
 
         <android.support.constraint.ConstraintLayout
-            android:layout_below="@+id/iv_event"
+            android:layout_below="@+id/iv_bonus"
             android:layout_width="match_parent"
             android:layout_height="60dp"
 
@@ -49,11 +49,11 @@
                 android:id="@+id/txt_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="DEZ"
                 android:textColor="@color/colorAccent"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -80,7 +80,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txt_month" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txt_event_local"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Woods Curitiba"
@@ -103,8 +103,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/txt_event_local"
+                app:layout_constraintTop_toBottomOf="@+id/txt_event_local"
                 app:srcCompat="@drawable/ic_action_clock" />
 
             <ImageView
@@ -118,7 +118,7 @@
                 app:srcCompat="@drawable/ic_location_on" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/txt_event_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="1dp"

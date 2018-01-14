@@ -46,8 +46,6 @@ class EventsFragment : Fragment(), MVP.ViewListEvents {
         setHasOptionsMenu(true)
         retainInstance = true
         mEstablishment = arguments?.getSerializable(EXTRA_ESTABLISMENT) as? Establishment
-
-
     }
 
 
@@ -59,6 +57,8 @@ class EventsFragment : Fragment(), MVP.ViewListEvents {
         presenter?.setView(this);
         if(mEstablishment!=null){
             presenter?.retrieveEvents(mEstablishment!!._id)
+        }else{
+            presenter?.retrieveEvents("dfasdfasd")
         }
 
         return view;
@@ -78,7 +78,7 @@ class EventsFragment : Fragment(), MVP.ViewListEvents {
     }
 
     override fun updateList() {
-
+        adapter?.notifyDataSetChanged()
     }
 
     override fun showLoadProgresss(status: Boolean, message: String) {

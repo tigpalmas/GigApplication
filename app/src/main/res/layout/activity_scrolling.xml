@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/navigation"
-        android:fitsSystemWindows="true"
+        android:fitsSystemWindows="false"
         tools:context="com.example.tiago.dancerkotlin.ScrollingActivity">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:fitsSystemWindows="true"
+            android:layout_height="?attr/actionBarSize"
+            android:fitsSystemWindows="false"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <android.support.design.widget.CollapsingToolbarLayout
@@ -30,15 +30,24 @@
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
                 app:titleEnabled="false"
-                app:layout_scrollFlags="scroll|snap|enterAlways"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:toolbarId="@+id/toolbar">
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
+                    android:layout_gravity="bottom"
+
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+
+
+
+
+
+                </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>
         </android.support.design.widget.AppBarLayout>

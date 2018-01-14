@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SearchView
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 
 import com.example.tiago.myapplication.R
@@ -25,7 +27,8 @@ import kotlinx.android.synthetic.main.fragment_list_establishment.*
 /**
  * A simple [Fragment] subclass.
  */
-class ListEstablishmentFragment : Fragment(), MVP.ViewListEstablishment, SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {
+class UserFavoritsFragment : Fragment(), MVP.ViewListEstablishment, SearchView.OnQueryTextListener, MenuItemCompat.OnActionExpandListener {
+
 
 
     var presenter : MVP.PresenterListEstablishments? = null
@@ -65,23 +68,23 @@ class ListEstablishmentFragment : Fragment(), MVP.ViewListEstablishment, SearchV
 
     }
 
-  /*  override fun onPrepareOptionsMenu(menu: Menu?) {
-        var menuMain = menu!!.findItem(R.id.action_main);
-        menuMain?.isVisible = true
-    }
+    /*  override fun onPrepareOptionsMenu(menu: Menu?) {
+          var menuMain = menu!!.findItem(R.id.action_main);
+          menuMain?.isVisible = true
+      }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        var menu = menu
-        // Do something that differs the Activity's menu here
-        menu = menu
+      override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+          var menu = menu
+          // Do something that differs the Activity's menu here
+          menu = menu
 
-        val searchItem = menu!!.findItem(R.id.action_search)
-        searchItem.isVisible = true
-        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
-        searchView?.setOnQueryTextListener(this)
-        searchView?.queryHint = "Buscar"
-        MenuItemCompat.setOnActionExpandListener(searchItem, this)
-    }*/
+          val searchItem = menu!!.findItem(R.id.action_search)
+          searchItem.isVisible = true
+          val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+          searchView?.setOnQueryTextListener(this)
+          searchView?.queryHint = "Buscar"
+          MenuItemCompat.setOnActionExpandListener(searchItem, this)
+      }*/
 
     override fun updateList() {
         adapter?.notifyDataSetChanged()
@@ -95,13 +98,6 @@ class ListEstablishmentFragment : Fragment(), MVP.ViewListEstablishment, SearchV
         }
         txt_loading_events?.setText(message)
     }
-
-    override fun onResume() {
-        super.onResume()
-
-    }
-
-
 
 
 
@@ -132,7 +128,4 @@ class ListEstablishmentFragment : Fragment(), MVP.ViewListEstablishment, SearchV
     }
 
 
-
-
-
-}
+}// Required empty public constructor

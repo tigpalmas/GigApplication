@@ -6,9 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import com.example.tiago.myapplication.fragments.ListEstablishmentFragment
-import com.example.tiago.myapplication.fragments.TimeLineFragment
-import com.example.tiago.myapplication.fragments.UserPerfilFragment
+import com.example.tiago.myapplication.fragments.*
 import com.example.tiago.myapplication.utils.BottomNavigationViewHelper
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_scrolling.*
@@ -26,13 +24,11 @@ class MainActivity : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                val fragment = TimeLineFragment();
+                val fragment = TimeLineFragment4();
                 ShowFragmnetON(fragment, "fragment2");
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_Favoritos -> {
-
-
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_user -> {
@@ -52,8 +48,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        Picasso.with(this).load(R.drawable.balada_background).into(img_background);
-        val fragment = TimeLineFragment();
+      //  Picasso.with(this).load(R.drawable.balada_background).into(img_background);
+        val fragment = TimeLineFragment4();
         ShowFragmnetON(fragment, "fragment2");
 
 

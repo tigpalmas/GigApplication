@@ -29,8 +29,7 @@
 
 
     <TextView
-        android:visibility="gone"
-        android:text="Carregando Bônus..."
+        android:text="Carregando Bailes..."
         android:id="@+id/txt_loading"
         style="@style/txt_loading_style" />
 

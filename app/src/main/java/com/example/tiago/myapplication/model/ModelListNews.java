@@ -31,7 +31,7 @@ public class ModelListNews implements MVP.ModelListNews {
     }
 
     private void getNewsFromServer(String id) {
-        Call<List<News>> call = service.getNews(id);
+        Call<List<News>> call = service.getNewsLine();
         call.enqueue(new Callback<List<News>>() {
             @Override
             public void onResponse(Call<List<News>> call, Response<List<News>> response) {

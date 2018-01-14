@@ -55,10 +55,17 @@ class PerfilEstablishmentFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        var tags: String = ""
+       /* for(i in mEstablishment?.tagId!!){
+            tags = "${tags+i.name} "
+        }*/
+
+        txt_tags?.text = tags
+
         txt_perfilname?.text = mEstablishment?.personalDataId?.name
         txt_perfil_adress?.text = mEstablishment?.addressId?.street
         txt_description?.text = mEstablishment?.description
-        txt_capacity?.text = mEstablishment?.capacity
+        //txt_capacity?.text = mEstablishment?.capacity
     }
 
 }// Required empty public constructor

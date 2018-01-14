@@ -9,9 +9,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
-import com.example.tiago.myapplication.EstablishmentDetailActivity
 import com.example.tiago.myapplication.EventDetailActivity
 import com.example.tiago.myapplication.R
+import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
 import com.example.tiago.myapplication.domain.TimelineModel
 import com.example.tiago.myapplication.utils.Util
@@ -88,29 +88,35 @@ class TimeLineAdapter(items: List<TimelineModel>, ctx: Context) : RecyclerView.A
 
 
     class ViewHolderEvent(itemView: View?) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        lateinit var ctx: Context
-        lateinit var item: TimelineModel
-        lateinit var event: Event;
-        val imgEvent = itemView?.findViewById<ImageView>(R.id.iv_event);
+        var ctx: Context? = null
+        var item: TimelineModel? = null
+        var event: Event? = null
+        var establishment: Establishment? = null;
+        val imgEvent = itemView?.findViewById<ImageView>(R.id.iv_bonus);
         val imgEstablishment = itemView?.findViewById<ImageView>(R.id.img_establishment);
         val txtEventName = itemView?.findViewById<TextView>(R.id.txt_event_name);
+        val txtEventLocal = itemView?.findViewById<TextView>(R.id.txt_event_local);
+        val txtEventCity = itemView?.findViewById<TextView>(R.id.txt_event_city);
         val txtMonth = itemView?.findViewById<TextView>(R.id.txt_month);
         val txtDay = itemView?.findViewById<TextView>(R.id.txt_day);
 
         init {
-            imgEvent?.setOnClickListener(this)
+            itemView?.setOnClickListener(this)
         }
 
         fun bind(item: TimelineModel, ctx: Context) {
             this.item = item;
             this.ctx = ctx;
-            event = item.eventId;
+            event = item?.eventId;
+            establishment = item?.establishmentId;
 
-            txtMonth?.setText(Util.obterMonth(item?.eventId.beginDate).toUpperCase())
-            txtDay?.setText(Util.obterDay(item?.eventId.beginDate))
-            txtEventName?.text = event.name
-            Picasso.with(ctx).load(event.imgUrl).into(imgEvent)
-
+            txtMonth?.setText(Util.obterMonth(item?.eventId?.beginDate).toUpperCase())
+            txtDay?.setText(Util.obterDay(item?.eventId?.beginDate))
+            txtEventName?.text = event?.name
+            txtEventLocal?.text = establishment?.personalDataId?.name
+            txtEventCity?.text =  establishment?.addressId?.city
+            Picasso.with(ctx).load(event?.imgUrl).into(imgEvent)
+            Picasso.with(ctx).load(establishment?.imgLogo).into(imgEstablishment)
         }
 
         override fun onClick(p0: View?) {

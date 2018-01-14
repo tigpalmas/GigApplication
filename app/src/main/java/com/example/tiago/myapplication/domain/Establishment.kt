@@ -13,6 +13,8 @@ class Establishment(
         val description: String,
         val personalDataId:PersonalData,
         val addressId: Address?
+     //  val coverId: List<Cover>,
+     //   val tagId: List<Tag>
 
 ) : Serializable {
 

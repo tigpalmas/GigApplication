@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relative"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+
     android:layout_marginTop="10dp"
     android:elevation="11dp">
 
@@ -17,13 +18,12 @@
 
 
         <ImageView
-            android:id="@+id/iv_event"
+            android:id="@+id/iv_bonus"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:scaleType="centerCrop"
             android:src="@drawable/negodoborel"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="0dp" />
+            />
 
         <View
             android:layout_width="150dp"
@@ -41,8 +41,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="18dp"
-            android:layout_marginRight="18dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
             android:layout_marginTop="16dp"
             app:civ_border_color="@color/md_white_1000"
             app:civ_border_width="1dp" />
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
 
-            android:layout_below="@+id/iv_event">
+            android:layout_below="@+id/iv_bonus">
 
 
             <TextView
@@ -90,7 +90,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txt_month" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/txt_event_local"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Woods Curitiba"
@@ -113,8 +113,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5"
+                app:layout_constraintStart_toStartOf="@+id/txt_event_local"
+                app:layout_constraintTop_toBottomOf="@+id/txt_event_local"
                 app:srcCompat="@drawable/ic_action_clock" />
 
             <ImageView
@@ -144,12 +144,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="$ 20"
                 android:textSize="28sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.99"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>

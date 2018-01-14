@@ -10,10 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.tiago.myapplication.R
-import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.domain.Event
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_blank_fragment2.*
 import kotlinx.android.synthetic.main.item_event.*
 
 
@@ -56,7 +54,7 @@ class EventDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        Picasso.with(activity).load(mEvent?.imgUrl).into(iv_event)
+        Picasso.with(activity).load(mEvent?.imgUrl).into(iv_bonus)
     }
 
     override fun onPrepareOptionsMenu(menu: Menu?) {

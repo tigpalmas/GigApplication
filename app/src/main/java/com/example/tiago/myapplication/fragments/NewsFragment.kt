@@ -3,6 +3,7 @@ package com.example.tiago.myapplication.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,6 @@ import com.example.tiago.myapplication.domain.Establishment
 import com.example.tiago.myapplication.model.MVP
 import com.example.tiago.myapplication.presenter.PresenterListEvent
 import com.example.tiago.myapplication.presenter.PresenterListNews
-import kotlinx.android.synthetic.main.fragment_bonus.*
-import kotlinx.android.synthetic.main.fragment_list_establishment.*
 import kotlinx.android.synthetic.main.fragment_new.*
 
 
@@ -58,15 +57,19 @@ class NewsFragment : Fragment(), MVP.ViewListNews {
         presenter?.setView(this);
         if(mEstablishment!=null){
             presenter?.retrieveNews(mEstablishment!!._id)
+        }else{
+            presenter?.retrieveNews("dfasdfasd")
         }
         return view;
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        showLoadProgresss(true, "Buscando Notícias");
+        swipeRefreshLayout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {  swipeRefreshLayout?.setRefreshing(false)})
         var activity = activity;
         if(activity !=null){
-            rv_news!!.layoutManager = LinearLayoutManager(activity,  LinearLayoutManager.VERTICAL, false)
+            rv_news?.layoutManager = LinearLayoutManager(activity,  LinearLayoutManager.VERTICAL, false)
             rv_news.setHasFixedSize(true);
             adapter = NewsAdapter(presenter?.getNews()!!, activity);
             rv_news.adapter = adapter;
@@ -79,9 +82,9 @@ class NewsFragment : Fragment(), MVP.ViewListNews {
 
     override fun showLoadProgresss(status: Boolean, message: String) {
         if (status) {
-            sf_news?.setRefreshing(true)
+            swipeRefreshLayout?.setRefreshing(true)
         } else {
-            sf_news?.setRefreshing(false)
+            swipeRefreshLayout?.setRefreshing(false)
         }
         txt_news?.setText(message)
     }
